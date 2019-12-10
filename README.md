@@ -1,1 +1,1 @@
-# anime-dl-cli
+# anime-dl
