@@ -21,10 +21,14 @@ for link in l:
 links = list(dict.fromkeys(links))
 print(links)
 
-episodes = requests.get("https://www.gogoanime.io{}".format(links[int(input("Enter index no.: "))])).text
-soup3 = BeautifulSoup(episodes, 'html.parser')
+i = int(input('Enter index no.: '))
 
-epnum = soup3.find_all(id="episode_page")
+name = links[i].split("/")[-1]
+
+episodes = requests.get("https://www.gogoanime.io{}".format(links[i])).text
+soup2 = BeautifulSoup(episodes,'html.parser')
+
+epnum = soup2.find_all(id="episode_page")
 n = epnum[0].find_all("a")
 
 nums = []
@@ -32,4 +36,28 @@ nums = []
 for num in n:
     nums.append(num["ep_end"])
 
-print(nums[-1])
+e = int(nums[-1]) + 1
+
+ep_links = []
+
+for k in range(1,e):
+    ep_links.append('https://www.gogoanime.io/{}-episode-{}'.format(name,k))
+
+vidlinks = []
+
+for ep_link in ep_links:
+    eppage = requests.get(ep_link)
+    soup3 = BeautifulSoup(eppage.text,'html.parser')
+    tags = soup3.find_all(attrs={"class":"anime_video_body_cate"})
+    
+    v = tags[0].find_all("a")
+    
+    garbages = []
+
+    for garbage in v:
+        garbages.append(garbage["href"])
+
+    vidlinks.append(garbages[-1])
+
+for _ in vidlinks:
+    print(_)
