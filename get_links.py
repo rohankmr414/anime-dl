@@ -21,10 +21,15 @@ for link in l:
 links = list(dict.fromkeys(links))
 print(links)
 
-#episodes = requests.get("https://www.gogoanime.io{}".format(links[int(input("Enter index no.: "))])).text
+episodes = requests.get("https://www.gogoanime.io{}".format(links[int(input("Enter index no.: "))])).text
+soup3 = BeautifulSoup(episodes, 'html.parser')
 
-#soup3 = BeautifulSoup(episodes, 'html.parser')
+epnum = soup3.find_all(id="episode_page")
+n = epnum[0].find_all("a")
 
-#li_tags = soup3.find_all(id="episode_related")
-#print(li_tags)
+nums = []
 
+for num in n:
+    nums.append(num["ep_end"])
+
+print(nums[-1])
