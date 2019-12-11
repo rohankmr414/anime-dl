@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import os
-import urllib
+from downloader_cli.download import Download
 
 keyword = input("Enter anime to search: ")
 html_data = requests.get("https://www.gogoanime.io/search.html?keyword={}".format(keyword))
@@ -21,7 +21,6 @@ for link in l:
 	links.append(link["href"])
 
 links = list(dict.fromkeys(links))
-print(links)
 
 i = int(input('Enter index no.: '))
 
@@ -72,3 +71,4 @@ for ep_link in ep_links:
 
 	dllinks = soup4.find_all(attrs={"class": "mirror_link"})
 	f_link = dllinks[0].a["href"]
+	Download(f_link).download()
