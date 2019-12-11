@@ -27,6 +27,12 @@ i = int(input('Enter index no.: '))
 
 name = links[i].split("/")[-1]
 
+try:
+    os.mkdir(os.getcwd() + "/{}".format(name))
+    os.system("cd {}".format(name))
+except Exception as e:
+    os.system("cd {}".format(name))
+
 episodes = requests.get("https://www.gogoanime.io{}".format(links[i])).text
 soup2 = BeautifulSoup(episodes,'html.parser')
 
@@ -64,6 +70,5 @@ for ep_link in ep_links:
 	dlpage = requests.get(garbages[-1])
 	soup4 = BeautifulSoup(dlpage.text,'html.parser')
 
-	dllinks = soup.find_all(attrs={"class": "mirror_link"})
+	dllinks = soup4.find_all(attrs={"class": "mirror_link"})
 	f_link = dllinks[0].a["href"]
-
