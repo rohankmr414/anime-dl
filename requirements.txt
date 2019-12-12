@@ -1,0 +1,4 @@
+beautifulsoup4==4.8.1
+bs4==0.0.1
+downloader-cli==0.1.0.post2
+requests==2.22.0

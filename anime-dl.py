@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
-import os, asyncio
+import os
 from downloader_cli.download import Download
 
 keyword = input("Enter anime to search: ")
