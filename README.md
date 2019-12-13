@@ -13,7 +13,7 @@
     ```
 3. Get the requirements
     ```sh
-    pip install --user --requirement requirements.txt
+    pip3 install --user --requirement requirements.txt
     ```
 
 ## Usage
