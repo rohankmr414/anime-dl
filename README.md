@@ -7,6 +7,7 @@
 1. Clone the repo
     ```sh
     git clone https://github.com/rohankmr414/anime-dl.git
+    ```
 2. cd into the repo directory
     ```sh
     cd anime-dl
