@@ -21,7 +21,7 @@
 3. Get the requirements
 
     ```sh
-    pip3 install --user --requirement requirements.txt
+    pip3 install -r requirements.txt
     ```
 
 ## Usage
