@@ -2,7 +2,7 @@
 
 A simple script written in python to download anime from Gogoanime website.
 
-Provide the anime name to search and select the correct one form the list.
+Provide the anime name to search and select the correct one from the list.
 The script will download every episode of the anime automatically.
 
 ## Prerequisites
