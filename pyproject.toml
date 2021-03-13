@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "anime_dl"
+version = "0.1.0"
+description = ""
+authors = ["rohankmr414 <rohankmr414@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+beautifulsoup4 = "^4.9.3"
+argparse = "^1.4.0"
+requests = "^2.25.1"
+colorama = "^0.4.4"
+wget = "^3.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+autopep8 = "^1.5.5"
+
+[tool.poetry.scripts]
+anime_dl = "anime_dl.main:main"
+
+[build-system]
+
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
