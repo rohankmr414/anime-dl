@@ -28,7 +28,7 @@ def bar_custom(current, total, width=40):
     return f'Downloading: {int(math.floor(current / total * 100))}% ' + Fore.BLUE + '|' + '▓'*shaded_dots + '░'*(avail_dots-shaded_dots) + '|' + Fore.RESET + f' [{current/1000000:.2f} / {total/1000000:.2f}] MB'
 
 
-def main():
+def animedl_exec():
     init()
     sc = dllink_scraper()
     parser = argparse.ArgumentParser(description='A simple command-line tool to download anime.',
@@ -82,13 +82,9 @@ def main():
     print(f'\nDownload completed at location {des}')
     deinit()
 
-
-if __name__ == '__main__':
+def main():
     try:
-        main()
+        animedl_exec()
     except KeyboardInterrupt:
-        print('Interrupted')
-        try:
-            sys.exit(0)
-        except SystemExit:
-            os._exit(0)
+        print('\nInterrupted')
+        sys.exit(0)
