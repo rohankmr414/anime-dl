@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from colorama import Fore, Style
+import sys
 
 
 class dllink_scraper:
@@ -43,6 +44,12 @@ class dllink_scraper:
             nums.append(num["ep_end"])
 
         e = int(nums[-1]) + 1
+
+        try:
+            assert rng[1] < e
+        except AssertionError:
+            print(f'There are only {e-1} episode(s) available')
+            sys.exit(1)
 
         ep_links = []
 

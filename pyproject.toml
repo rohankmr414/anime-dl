@@ -1,11 +1,15 @@
 [tool.poetry]
-name = "anime_dl"
+name = "anime-dl"
 version = "0.1.0"
 description = "A simple command-line tool to download anime."
 authors = ["Rohan Kumar <rohankmr414@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/rohankmr414/anime_dl"
+include=[
+	"LICENSE",
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -20,7 +24,7 @@ pytest = "^5.2"
 autopep8 = "^1.5.5"
 
 [tool.poetry.scripts]
-anime_dl = "anime_dl.main:main"
+anime-dl = "anime_dl.main:main"
 
 [build-system]
 

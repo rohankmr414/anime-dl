@@ -1,9 +1,10 @@
 import os
+import sys
 import math
 import wget
 import argparse
 from colorama import init, Fore, Style, deinit
-
+from anime_dl import __version__
 from anime_dl.scraper import dllink_scraper
 
 
@@ -24,14 +25,18 @@ def bar_custom(current, total, width=40):
     width = 40
     avail_dots = width-2
     shaded_dots = int(math.floor(float(current) / total * avail_dots))
-    return f'Downloading: {int(math.floor(current / total * 100))}% ' + Fore.BLUE + '▓'*shaded_dots + '░'*(avail_dots-shaded_dots) + Fore.RESET + f' [{current/1000000:.2f} / {total/1000000:.2f}] MB'
+    return f'Downloading: {int(math.floor(current / total * 100))}% ' + Fore.BLUE + '|' + '▓'*shaded_dots + '░'*(avail_dots-shaded_dots) + '|' + Fore.RESET + f' [{current/1000000:.2f} / {total/1000000:.2f}] MB'
 
 
 def main():
     init()
     sc = dllink_scraper()
     parser = argparse.ArgumentParser(description='A simple command-line tool to download anime.',
-                                     prog='anime_dl', formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=40))
+                                     prog='anime-dl', formatter_class=lambda prog: argparse.HelpFormatter(prog, max_help_position=40))
+
+    parser.add_argument('-v', '--version', action='version',
+                        help="display the version and exit", version='%(prog)s ' + __version__)
+
     parser.add_argument("-s", "--search", dest="keyword", required=True,
                         help="search for an anime", type=str)
 
@@ -41,7 +46,13 @@ def main():
     links = sc.search(kw)
     index = int(input(Style.BRIGHT + Fore.RED +
                       'Enter your selection: ' + Fore.RESET + Style.RESET_ALL))
-    name = links[index-1].split("/")[-1]
+    
+    try:  
+        name = links[index-1].split("/")[-1]
+    except LookupError:  
+        print ("Enter a valid choice")
+        sys.exit(1)
+
     eps = input(Style.BRIGHT + Fore.RED + 'Enter episode no. or range(ex: 1-5)' +
                 Fore.RESET + Style.RESET_ALL + '(* for all): ')
     epl = eps.split("-")
