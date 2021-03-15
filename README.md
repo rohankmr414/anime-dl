@@ -5,7 +5,7 @@ A simple command line tool written in python to download anime.
 ## Installation
 
 ```sh
-$ pip install anime-dl
+pip install anime-dl
 ```
 
 ## Usage

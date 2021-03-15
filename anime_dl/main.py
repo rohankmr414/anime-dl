@@ -25,7 +25,7 @@ def bar_custom(current, total, width=40):
     width = 40
     avail_dots = width-2
     shaded_dots = int(math.floor(float(current) / total * avail_dots))
-    return f'Downloading: {int(math.floor(current / total * 100))}% ' + Fore.BLUE + '|' + '▓'*shaded_dots + '░'*(avail_dots-shaded_dots) + '|' + Fore.RESET + f' [{current/1000000:.2f} / {total/1000000:.2f}] MB'
+    return f'Downloading: {int(math.floor(current / total * 100))}% ' + Fore.BLUE + '|' + '█'*shaded_dots + ' '*(avail_dots-shaded_dots) + '|' + Fore.RESET + f' [{current/1000000:.2f} / {total/1000000:.2f}] MB'
 
 
 def animedl_exec():
@@ -40,10 +40,9 @@ def animedl_exec():
     parser.add_argument("-s", "--search", dest="keyword", required=True,
                         help="search for an anime", type=str)
 
-    args, unknown = parser.parse_known_args()
+    args = parser.parse_args()
 
-    kw = args.keyword + ' ' + ' '.join(unknown)
-    links = sc.search(kw)
+    links = sc.search(args.keyword)
     index = int(input(Style.BRIGHT + Fore.RED +
                       'Enter your selection: ' + Fore.RESET + Style.RESET_ALL))
     

@@ -18,10 +18,11 @@ class dllink_scraper:
         t = a_tags[0].get_text().replace(" ", "").split("\n")
         for i in range(0, t.count('')):
             t.remove('')
-        
+
         count = 1
         for t_index in range(0, len(t), 2):
-            print(Style.BRIGHT + Fore.GREEN + str(count) + Fore.RESET + Style.RESET_ALL + '\t' + t[t_index] + ' (' + t[t_index+1] + ')')
+            print(Style.BRIGHT + Fore.GREEN + str(count) + Fore.RESET +
+                  Style.RESET_ALL + '\t' + t[t_index] + ' (' + t[t_index+1] + ')')
             count += 1
 
         links = []
@@ -44,6 +45,11 @@ class dllink_scraper:
             nums.append(num["ep_end"])
 
         e = int(nums[-1]) + 1
+
+        if rng == None:
+            rng = (0, e-1)
+        else:
+            pass
 
         try:
             assert rng[1] < e

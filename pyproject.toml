@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "anime-dl"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple command-line tool to download anime."
 authors = ["Rohan Kumar <rohankmr414@gmail.com>"]
 license = "MIT"
