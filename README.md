@@ -23,6 +23,6 @@ optional arguments:
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](LICENSE)  for more information.
+Copyright (c) **Rohan Kumar**. All rights reserved. Licensed under the MIT License
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
